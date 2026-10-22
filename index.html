@@ -1,28 +1,519 @@
+
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101820"><title>PTCU | Hydro Research Teams</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0"></script>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101820">
+<title>PTCU | Hydro Research Teams</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0"></script>
 <style>
-:root{color-scheme:dark;--bg:#0b1118;--panel:#121c27;--line:#293949;--gold:#e6c37a;--text:#edf3f8;--muted:#9aabba;--green:#68d6a0;--red:#ff9999}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#1a2b3b 0,transparent 38%),var(--bg);color:var(--text);font-family:Cairo,Arial,sans-serif;min-height:100vh}.wrap{max-width:1150px;margin:auto;padding:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:20px}.brand{display:flex;gap:12px;align-items:center}.logo{width:49px;height:49px;border:1px solid #6e5d3b;border-radius:15px;display:grid;place-items:center;background:#1d2934;color:var(--gold);font-weight:800;font-size:20px}.brand h1{font-size:19px;margin:0}.brand p{font:11px Inter,sans-serif;color:var(--muted);margin:2px 0 0;direction:ltr}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{padding:10px 14px;border-radius:11px;background:var(--gold);color:#1a2027;font-weight:800;border:0;cursor:pointer;font-family:inherit}.btn.secondary{background:#1c2a38;color:var(--text);border:1px solid var(--line)}.btn.danger{background:#4a252a;color:#ffd4d4;border:1px solid #794147}.btn:disabled{opacity:.45;cursor:not-allowed}.hero,.panel,.stat,.team{background:rgba(18,28,39,.94);border:1px solid var(--line);border-radius:17px}.hero{padding:24px;background:linear-gradient(125deg,#172635,#111a24)}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1px}.hero h2{font-size:clamp(23px,4vw,33px);margin:8px 0}.hero p{margin:0;color:var(--muted);line-height:1.9}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:16px 0}.stat{padding:15px}.stat span{color:var(--muted);font-size:12px}.stat strong{display:block;font:700 26px Inter,Cairo,sans-serif;margin-top:4px}.notice{padding:12px 14px;border-radius:11px;margin:12px 0;font-size:13px;line-height:1.8;background:#172b3a;border:1px solid #2d526b;color:#d6edff}.notice.error{background:#3b2226;border-color:#6d363e;color:#ffd5d5}.notice.success{background:#173329;border-color:#2c6149;color:#c9ffe3}.hidden{display:none!important}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:17px 0}.field{background:#0c141d;border:1px solid var(--line);border-radius:11px;padding:11px 13px;color:var(--text);font:inherit;outline:none}.field:focus{border-color:var(--gold)}.search{flex:1;min-width:200px}.toolbar select{min-width:160px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:24px 0 12px}.section-title h3{margin:0;font-size:18px}.muted{color:var(--muted);font-size:12px}.teams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.team{padding:18px;background:linear-gradient(160deg,#15212d,#101923)}.team-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.team h4{font:600 16px Inter,Cairo,sans-serif;text-align:left;direction:ltr;margin:0;line-height:1.55}.tag{font-size:11px;border-radius:30px;padding:4px 9px;white-space:nowrap;background:#18382d;color:var(--green);border:1px solid #275743}.tag.full{background:#3a3020;color:var(--gold);border-color:#665333}.progress{height:6px;background:#263442;border-radius:20px;overflow:hidden;margin:14px 0 8px}.progress span{display:block;height:100%;background:var(--gold);width:0}.members{display:flex;flex-direction:column;gap:7px;margin:12px 0}.member{display:flex;gap:8px;align-items:center;background:#0d151e;border:1px solid #233342;padding:8px 10px;border-radius:9px;font-size:12px}.number{display:grid;place-items:center;width:23px;height:23px;flex:none;background:#243544;border-radius:7px;color:var(--gold);font:600 11px Inter,sans-serif}.empty{padding:26px;text-align:center;border:1px dashed var(--line);border-radius:13px;color:var(--muted)}.panel{padding:19px;margin-top:18px}.adminhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:580px}th,td{text-align:right;padding:11px;border-bottom:1px solid var(--line);font-size:12px}th{color:var(--muted)}.footer{text-align:center;color:#728496;font-size:12px;padding:25px 0}.backdrop{position:fixed;inset:0;background:#000b;display:grid;place-items:center;padding:16px;z-index:4}.modal{width:min(460px,100%);background:#121c27;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 24px 80px #0008}.modal h3{margin:0 0 8px}.modal .field{width:100%;margin:6px 0 13px}.modalactions{display:flex;gap:9px;margin-top:12px}.modalactions>*{flex:1}@media(max-width:700px){.wrap{padding:13px}.top{align-items:flex-start}.brand h1{font-size:16px}.brand p{font-size:9px}.logo{width:42px;height:42px}.actions .btn{font-size:12px;padding:8px}.teams{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:22px}.stat span{font-size:10px}.toolbar>*{width:100%;min-width:0!important}.hero{padding:19px}}
-</style></head><body><main class="wrap">
-<header class="top"><div class="brand"><div class="logo">PT</div><div><h1>حجز تيمات Hydrotherapy Research</h1><p>FACULTY OF PHYSICAL THERAPY · CAIRO UNIVERSITY</p></div></div><div class="actions"><button class="btn secondary" id="refresh">تحديث ↻</button><button class="btn" id="adminOpen">لوحة الإدارة</button></div></header>
-<section class="hero"><div class="eyebrow">PTCU • HYDRO RESEARCH</div><h2>اختار التيم المناسب ليك</h2><p>اختار اسمك بنفسك وانضم لفريق متاح. كل طالب يقدر ينضم لتيم واحد فقط، وعدد الأماكن محدود حسب سعة كل فريق. اسم كل عضو هيظهر في قائمة الفريق بعد التسجيل.</p><div id="status" class="notice hidden" role="status"></div></section>
-<div class="stats"><div class="stat"><span>عدد التيمات</span><strong id="teamCount">6</strong></div><div class="stat"><span>الأماكن المتاحة</span><strong id="freeCount">—</strong></div><div class="stat"><span>الطلاب المسجلون</span><strong id="joinedCount">0</strong></div></div>
-<div class="toolbar"><input class="field search" id="search" placeholder="ابحث باسم التوبيك أو الطالب..."><select class="field" id="filter"><option value="all">كل التيمات</option><option value="available">التيمات المتاحة فقط</option><option value="full">التيمات المكتملة فقط</option></select></div>
-<div class="section-title"><h3>Research Teams / التيمات</h3><span class="muted" id="results"></span></div><div id="teams" class="teams"><div class="empty">جاري تحميل التيمات...</div></div>
-<section class="panel hidden" id="adminPanel"><div class="adminhead"><div><h3>لوحة الإدارة</h3><div class="muted" id="adminEmail"></div></div><button class="btn secondary" id="logout">تسجيل الخروج</button></div><div id="adminStatus" class="notice hidden"></div><div class="section-title"><h3>كل التسجيلات</h3><span class="muted">إزالة الطالب تفتح مكانًا في التيم</span></div><div class="tablewrap"><table><thead><tr><th>رقم التيم</th><th>Topic</th><th>الطالب</th><th>وقت التسجيل</th><th>إجراء</th></tr></thead><tbody id="rows"><tr><td colspan="5">لا توجد تسجيلات حتى الآن.</td></tr></tbody></table></div></section><div class="footer">PTCU Hydro Research Teams · Team booking</div></main>
-<div id="joinModal" class="backdrop hidden" role="dialog" aria-modal="true"><div class="modal"><h3>الانضمام إلى التيم</h3><p class="muted" id="selectedTeam"></p><label for="student">اختار اسمك من القائمة</label><select id="student" class="field"><option value="">-- اختار اسمك --</option></select><div id="joinMessage" class="notice hidden"></div><div class="modalactions"><button class="btn" id="joinConfirm">تأكيد التسجيل</button><button class="btn secondary" id="joinClose">إلغاء</button></div></div></div>
-<div id="loginModal" class="backdrop hidden" role="dialog" aria-modal="true"><div class="modal"><h3>دخول الإدارة</h3><p class="muted">استخدم نفس حساب الإدارة المعتمد.</p><label for="email">البريد الإلكتروني</label><input id="email" class="field" type="email" autocomplete="username" placeholder="admin@example.com"><label for="password">كلمة المرور</label><input id="password" class="field" type="password" autocomplete="current-password" placeholder="كلمة المرور"><div id="loginMessage" class="notice hidden"></div><div class="modalactions"><button class="btn" id="login">تسجيل الدخول</button><button class="btn secondary" id="loginClose">إغلاق</button></div></div></div>
+:root{color-scheme:dark;--bg:#0b1118;--panel:#121c27;--line:#293949;--gold:#e6c37a;--text:#edf3f8;--muted:#9aabba;--green:#68d6a0;--red:#ff9999}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 10% 0%,#1a2b3b 0,transparent 38%),var(--bg);color:var(--text);font-family:Cairo,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:1150px;margin:auto;padding:22px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:20px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:49px;height:49px;border:1px solid #6e5d3b;border-radius:15px;display:grid;place-items:center;background:#1d2934;color:var(--gold);font-weight:800;font-size:20px}
+.brand h1{font-size:19px;margin:0}
+.brand p{font:11px Inter,sans-serif;color:var(--muted);margin:2px 0 0;direction:ltr}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:10px 14px;border-radius:11px;background:var(--gold);color:#1a2027;font-weight:800;border:0;cursor:pointer;font-family:inherit}
+.btn.secondary{background:#1c2a38;color:var(--text);border:1px solid var(--line)}
+.btn.danger{background:#4a252a;color:#ffd4d4;border:1px solid #794147}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.hero,.panel,.stat,.team{background:rgba(18,28,39,.94);border:1px solid var(--line);border-radius:17px}
+.hero{padding:24px;background:linear-gradient(125deg,#172635,#111a24)}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1px}
+.hero h2{font-size:clamp(23px,4vw,33px);margin:8px 0}
+.hero p{margin:0;color:var(--muted);line-height:1.9}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:16px 0}
+.stat{padding:15px}
+.stat span{color:var(--muted);font-size:12px}
+.stat strong{display:block;font:700 26px Inter,Cairo,sans-serif;margin-top:4px}
+.notice{padding:12px 14px;border-radius:11px;margin:12px 0;font-size:13px;line-height:1.8;background:#172b3a;border:1px solid #2d526b;color:#d6edff}
+.notice.error{background:#3b2226;border-color:#6d363e;color:#ffd5d5}
+.notice.success{background:#173329;border-color:#2c6149;color:#c9ffe3}
+.hidden{display:none!important}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:17px 0}
+.field{background:#0c141d;border:1px solid var(--line);border-radius:11px;padding:11px 13px;color:var(--text);font:inherit;outline:none}
+.field:focus{border-color:var(--gold)}
+.search{flex:1;min-width:200px}
+.toolbar select{min-width:160px}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:24px 0 12px}
+.section-title h3{margin:0;font-size:18px}
+.muted{color:var(--muted);font-size:12px}
+.teams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.team{padding:18px;background:linear-gradient(160deg,#15212d,#101923)}
+.team-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.team h4{font:600 16px Inter,Cairo,sans-serif;text-align:left;direction:ltr;margin:0;line-height:1.55}
+.tag{font-size:11px;border-radius:30px;padding:4px 9px;white-space:nowrap;background:#18382d;color:var(--green);border:1px solid #275743}
+.tag.full{background:#3a3020;color:var(--gold);border-color:#665333}
+.progress{height:6px;background:#263442;border-radius:20px;overflow:hidden;margin:14px 0 8px}
+.progress span{display:block;height:100%;background:var(--gold);width:0}
+.members{display:flex;flex-direction:column;gap:7px;margin:12px 0}
+.member{display:flex;gap:8px;align-items:center;background:#0d151e;border:1px solid #233342;padding:8px 10px;border-radius:9px;font-size:12px}
+.number{display:grid;place-items:center;width:23px;height:23px;flex:none;background:#243544;border-radius:7px;color:var(--gold);font:600 11px Inter,sans-serif}
+.empty{padding:26px;text-align:center;border:1px dashed var(--line);border-radius:13px;color:var(--muted)}
+.panel{padding:19px;margin-top:18px}
+.adminhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tablewrap{overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:580px}
+th,td{text-align:right;padding:11px;border-bottom:1px solid var(--line);font-size:12px}
+th{color:var(--muted)}
+.footer{text-align:center;color:#728496;font-size:12px;padding:25px 0}
+.backdrop{position:fixed;inset:0;background:#000b;display:grid;place-items:center;padding:16px;z-index:4}
+.modal{width:min(460px,100%);background:#121c27;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 24px 80px #0008}
+.modal h3{margin:0 0 8px}
+.modal .field{width:100%;margin:6px 0 13px}
+.modalactions{display:flex;gap:9px;margin-top:12px}
+.modalactions>*{flex:1}
+@media(max-width:700px){
+.wrap{padding:13px}
+.top{align-items:flex-start}
+.brand h1{font-size:16px}
+.brand p{font-size:9px}
+.logo{width:42px;height:42px}
+.actions .btn{font-size:12px;padding:8px}
+.teams{grid-template-columns:1fr}
+.stats{gap:7px}
+.stat{padding:11px}
+.stat strong{font-size:22px}
+.stat span{font-size:10px}
+.toolbar>*{width:100%;min-width:0!important}
+.hero{padding:19px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top">
+<div class="brand">
+<div class="logo">PT</div>
+<div>
+<h1>حجز تيمات Hydrotherapy Research</h1>
+<p>FACULTY OF PHYSICAL THERAPY · CAIRO UNIVERSITY</p>
+</div>
+</div>
+<div class="actions">
+<button class="btn secondary" id="refresh">تحديث ↻</button>
+<button class="btn" id="adminOpen">لوحة الإدارة</button>
+</div>
+</header>
+
+<section class="hero">
+<div class="eyebrow">PTCU • HYDRO RESEARCH</div>
+<h2>اختار التيم المناسب ليك</h2>
+<p>اختار اسمك بنفسك وانضم لفريق متاح. كل طالب يقدر ينضم لتيم واحد فقط، وعدد الأماكن محدود حسب سعة كل فريق. اسم كل عضو هيظهر في قائمة الفريق بعد التسجيل.</p>
+<div id="status" class="notice hidden" role="status"></div>
+</section>
+
+<div class="stats">
+<div class="stat"><span>عدد التيمات</span><strong id="teamCount">6</strong></div>
+<div class="stat"><span>الأماكن المتاحة</span><strong id="freeCount">—</strong></div>
+<div class="stat"><span>الطلاب المسجلون</span><strong id="joinedCount">0</strong></div>
+</div>
+
+<div class="toolbar">
+<input class="field search" id="search" placeholder="ابحث باسم التوبيك أو الطالب...">
+<select class="field" id="filter">
+<option value="all">كل التيمات</option>
+<option value="available">التيمات المتاحة فقط</option>
+<option value="full">التيمات المكتملة فقط</option>
+</select>
+</div>
+
+<div class="section-title">
+<h3>Research Teams / التيمات</h3>
+<span class="muted" id="results"></span>
+</div>
+<div id="teams" class="teams"><div class="empty">جاري تحميل التيمات...</div></div>
+
+<section class="panel hidden" id="adminPanel">
+<div class="adminhead">
+<div><h3>لوحة الإدارة</h3><div class="muted" id="adminEmail"></div></div>
+<button class="btn secondary" id="logout">تسجيل الخروج</button>
+</div>
+<div id="adminStatus" class="notice hidden"></div>
+<div class="section-title">
+<h3>كل التسجيلات</h3>
+<span class="muted">إزالة الطالب تفتح مكانًا في التيم</span>
+</div>
+<div class="tablewrap">
+<table>
+<thead><tr><th>رقم التيم</th><th>Topic</th><th>الطالب</th><th>وقت التسجيل</th><th>إجراء</th></tr></thead>
+<tbody id="rows"><tr><td colspan="5">لا توجد تسجيلات حتى الآن.</td></tr></tbody>
+</table>
+</div>
+</section>
+<div class="footer">PTCU Hydro Research Teams · Team booking</div>
+</main>
+
+<div id="joinModal" class="backdrop hidden" role="dialog" aria-modal="true">
+<div class="modal">
+<h3>الانضمام إلى التيم</h3>
+<p class="muted" id="selectedTeam"></p>
+<label for="student">اختار اسمك من القائمة</label>
+<select id="student" class="field"><option value="">-- اختار اسمك --</option></select>
+<div id="joinMessage" class="notice hidden"></div>
+<div class="modalactions">
+<button class="btn" id="joinConfirm">تأكيد التسجيل</button>
+<button class="btn secondary" id="joinClose">إلغاء</button>
+</div>
+</div>
+</div>
+
+<div id="loginModal" class="backdrop hidden" role="dialog" aria-modal="true">
+<div class="modal">
+<h3>دخول الإدارة</h3>
+<p class="muted">استخدم نفس حساب الإدارة المعتمد.</p>
+<label for="email">البريد الإلكتروني</label>
+<input id="email" class="field" type="email" autocomplete="username" placeholder="admin@example.com">
+<label for="password">كلمة المرور</label>
+<input id="password" class="field" type="password" autocomplete="current-password" placeholder="كلمة المرور">
+<div id="loginMessage" class="notice hidden"></div>
+<div class="modalactions">
+<button class="btn" id="login">تسجيل الدخول</button>
+<button class="btn secondary" id="loginClose">إغلاق</button>
+</div>
+</div>
+</div>
+
 <script>
 (()=>{'use strict';
-const URL='https://wauycitelklrfxyebdgf.supabase.co', KEY='sb_publishable_lE8_kfeqHL7zlzGg1yAGvA_DwtTbbbO';const db=window.supabase.createClient(URL,KEY);const $=x=>document.getElementById(x);let students=[],teams=[],bookings=[],chosen=null,isAdmin=false;
-const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function msg(id,t,type=''){let e=$(id);e.textContent=t;e.className='notice'+(type?' '+type:'')}function hide(id){$(id).classList.add('hidden')}function show(id){$(id).classList.remove('hidden')}function members(teamId){return bookings.filter(b=>+b.team_id===+teamId).sort((a,b)=>a.slot_number-b.slot_number)}function person(id){return students.find(s=>+s.id===+id)}
-async function load(){ $('teams').innerHTML='<div class="empty">جاري تحميل البيانات...</div>';let [s,t,b]=await Promise.all([db.from('ptcu_students').select('id,full_name').order('full_name'),db.from('hydro_research_teams').select('id,team_number,topic_title,capacity').order('team_number'),db.from('hydro_research_bookings').select('id,team_id,student_id,slot_number,created_at').order('created_at')]);let err=s.error||t.error||b.error;if(err){$('teams').innerHTML='<div class="empty">تعذر تحميل البيانات. راجع اتصال الإنترنت وإعدادات المشروع.</div>';msg('status','خطأ في تحميل البيانات: '+err.message,'error');return}students=s.data||[];teams=t.data||[];bookings=b.data||[];$('teamCount').textContent=teams.length;$('freeCount').textContent=teams.reduce((n,t)=>n+Math.max(0,t.capacity-members(t.id).length),0);$('joinedCount').textContent=bookings.length;$('student').innerHTML='<option value="">-- اختار اسمك --</option>'+students.map(s=>`<option value="${s.id}">${esc(s.full_name)}</option>`).join('');render();if(isAdmin)renderAdmin();hide('status')}
-function render(){let q=$('search').value.trim().toLocaleLowerCase(),f=$('filter').value;let arr=teams.filter(t=>{let m=members(t.id),hay=(t.topic_title+' '+m.map(x=>person(x.student_id)?.full_name||'').join(' ')).toLocaleLowerCase();return (!q||hay.includes(q))&&(f==='all'||(f==='available'?m.length<t.capacity:m.length>=t.capacity))});$('results').textContent=`${arr.length} من ${teams.length}`;if(!arr.length){$('teams').innerHTML='<div class="empty" style="grid-column:1/-1">مفيش نتائج مطابقة.</div>';return}$('teams').innerHTML=arr.map(t=>{let m=members(t.id),full=m.length>=t.capacity,remaining=t.capacity-m.length;return `<article class="team"><div class="team-head"><div><div class="muted">TEAM ${t.team_number} · ${t.capacity} أفراد</div><h4>${esc(t.topic_title)}</h4></div><span class="tag ${full?'full':''}">${full?'مكتمل':`متاح ${remaining} مكان`}</span></div><div class="progress"><span style="width:${Math.min(100,m.length/t.capacity*100)}%"></span></div><div class="muted">${m.length} / ${t.capacity} أعضاء</div><div class="members">${Array.from({length:t.capacity},(_,i)=>{let x=m.find(z=>+z.slot_number===i+1);return `<div class="member"><span class="number">${i+1}</span><span>${x?esc(person(x.student_id)?.full_name||'طالب مسجل'):'مكان متاح'}</span></div>`}).join('')}</div><button class="btn ${full?'secondary':''}" data-join="${t.id}" ${full?'disabled':''}>${full?'التيم مكتمل':'انضم للتيم'}</button></article>`}).join('');$('teams').querySelectorAll('[data-join]').forEach(b=>b.onclick=()=>openJoin(+b.dataset.join))}
-function openJoin(id){chosen=teams.find(t=>+t.id===id);if(!chosen)return;$('selectedTeam').textContent=`Team ${chosen.team_number}: ${chosen.topic_title} — السعة ${chosen.capacity} أفراد`;$('student').value='';hide('joinMessage');$('joinConfirm').disabled=false;show('joinModal')}
-async function join(){let sid=+$('student').value;if(!sid){msg('joinMessage','اختار اسمك الأول.','error');return}if(bookings.some(b=>+b.student_id===sid)){msg('joinMessage','الاسم ده مسجل بالفعل في تيم. كل طالب له تيم واحد فقط.','error');return}let t=chosen;if(!t)return;let current=members(t.id);if(current.length>=t.capacity){msg('joinMessage','التيم اكتمل. اختار تيم تاني.','error');return}let occupied=new Set(current.map(b=>+b.slot_number)),slot=Array.from({length:t.capacity},(_,i)=>i+1).find(i=>!occupied.has(i));$('joinConfirm').disabled=true;let {error}=await db.from('hydro_research_bookings').insert({team_id:t.id,student_id:sid,slot_number:slot});$('joinConfirm').disabled=false;if(error){msg('joinMessage',error.code==='23505'?'الاسم أو المكان اتسجل بالفعل. حدّث الصفحة واختار تيم متاح.':'لم يتم التسجيل: '+error.message,'error');return}msg('joinMessage','تم تسجيلك في التيم بنجاح!','success');await load();setTimeout(()=>hide('joinModal'),700)}
-async function checkAdmin(){let {data}=await db.auth.getSession();isAdmin=false;if(data.session){let {data:row}=await db.from('ptcu_admins').select('user_id,email').eq('user_id',data.session.user.id).maybeSingle();if(row){isAdmin=true;$('adminEmail').textContent=row.email||data.session.user.email;show('adminPanel');renderAdmin()}}if(!isAdmin)hide('adminPanel')}
-function renderAdmin(){if(!isAdmin)return;if(!bookings.length){$('rows').innerHTML='<tr><td colspan="5">لا توجد تسجيلات حتى الآن.</td></tr>';return}$('rows').innerHTML=[...bookings].sort((a,b)=>a.team_id-b.team_id||a.slot_number-b.slot_number).map(b=>{let t=teams.find(t=>+t.id===+b.team_id),s=person(b.student_id);return `<tr><td>${t?.team_number||'—'}</td><td style="direction:ltr;text-align:left">${esc(t?.topic_title||'—')}</td><td>${esc(s?.full_name||'—')}</td><td>${esc(new Date(b.created_at).toLocaleString('ar-EG'))}</td><td><button class="btn danger" data-remove="${b.id}">إزالة</button></td></tr>`}).join('');$('rows').querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>removeBooking(+b.dataset.remove))}
-async function removeBooking(id){if(!confirm('متأكد من إزالة الطالب من التيم؟'))return;let {error}=await db.from('hydro_research_bookings').delete().eq('id',id);if(error){msg('adminStatus','تعذر الحذف: '+error.message,'error');show('adminStatus');return}msg('adminStatus','تمت إزالة التسجيل وإتاحة المكان.','success');show('adminStatus');await load()}
-async function login(){let email=$('email').value.trim(),password=$('password').value;if(!email||!password){msg('loginMessage','اكتب البريد وكلمة المرور.','error');return}$('login').disabled=true;let {error}=await db.auth.signInWithPassword({email,password});$('login').disabled=false;if(error){msg('loginMessage','تعذر تسجيل الدخول. تأكد من البريد وكلمة المرور وتأكيد الحساب.','error');return}await checkAdmin();if(!isAdmin){await db.auth.signOut();msg('loginMessage','الحساب لا يملك صلاحية Admin. تأكد أن الحساب مضاف في جدول ptcu_admins.','error');return}hide('loginModal');await load()}
-$('refresh').onclick=load;$('search').oninput=render;$('filter').onchange=render;$('joinConfirm').onclick=join;$('joinClose').onclick=()=>hide('joinModal');$('adminOpen').onclick=async()=>{await checkAdmin();if(isAdmin){$('adminPanel').scrollIntoView({behavior:'smooth'});return}hide('loginMessage');show('loginModal')};$('loginClose').onclick=()=>hide('loginModal');$('login').onclick=login;$('password').addEventListener('keydown',e=>{if(e.key==='Enter')login()});$('logout').onclick=async()=>{await db.auth.signOut();isAdmin=false;hide('adminPanel');msg('status','تم تسجيل الخروج من الإدارة.','success');show('status')};db.auth.onAuthStateChange(()=>setTimeout(checkAdmin,0));load();setInterval(load,30000);
+
+const URL='https://wauycitelklrfxyebdgf.supabase.co';
+const KEY='sb_publishable_lE8_kfeqHL7zlzGg1yAGvA_DwtTbbbO';
+const db=window.supabase.createClient(URL,KEY);
+const $=x=>document.getElementById(x);
+
+let students=[],teams=[],bookings=[],chosen=null,isAdmin=false;
+
+/* التعديل: أول تيم سعته 5 أفراد سيصبح سعته 6 في عرض الموقع */
+const EXTRA_MEMBER_TEAM_NUMBER=1;
+
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({
+'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[c]));
+
+function msg(id,t,type=''){
+let e=$(id);
+e.textContent=t;
+e.className='notice'+(type?' '+type:'');
+}
+function hide(id){$(id).classList.add('hidden')}
+function show(id){$(id).classList.remove('hidden')}
+function members(teamId){
+return bookings.filter(b=>+b.team_id===+teamId).sort((a,b)=>a.slot_number-b.slot_number);
+}
+function person(id){return students.find(s=>+s.id===+id)}
+
+async function load(){
+$('teams').innerHTML='<div class="empty">جاري تحميل البيانات...</div>';
+
+let [s,t,b]=await Promise.all([
+db.from('ptcu_students').select('id,full_name').order('full_name'),
+db.from('hydro_research_teams').select('id,team_number,topic_title,capacity').order('team_number'),
+db.from('hydro_research_bookings').select('id,team_id,student_id,slot_number,created_at').order('created_at')
+]);
+
+let err=s.error||t.error||b.error;
+
+if(err){
+$('teams').innerHTML='<div class="empty">تعذر تحميل البيانات. راجع اتصال الإنترنت وإعدادات المشروع.</div>';
+msg('status','خطأ في تحميل البيانات: '+err.message,'error');
+return;
+}
+
+students=s.data||[];
+
+/*
+نختار تيمًا واحدًا فقط من التيمات ذات سعة 5.
+يتم تعديل السعة المعروضة محليًا، دون تغيير بيانات قاعدة البيانات.
+*/
+let extraAssigned=false;
+teams=(t.data||[]).map(team=>{
+if(
+!extraAssigned &&
++team.capacity===5 &&
++team.team_number===EXTRA_MEMBER_TEAM_NUMBER
+){
+extraAssigned=true;
+return {...team,capacity:6};
+}
+return team;
+});
+
+/* لو رقم التيم المحدد غير موجود، اختار أول تيم سعته 5 */
+if(!extraAssigned){
+let fallbackUsed=false;
+teams=(t.data||[]).map(team=>{
+if(!fallbackUsed && +team.capacity===5){
+fallbackUsed=true;
+return {...team,capacity:6};
+}
+return team;
+});
+}
+
+bookings=b.data||[];
+
+$('teamCount').textContent=teams.length;
+$('freeCount').textContent=teams.reduce((n,t)=>n+Math.max(0,t.capacity-members(t.id).length),0);
+$('joinedCount').textContent=bookings.length;
+
+$('student').innerHTML='<option value="">-- اختار اسمك --</option>'+
+students.map(s=>`<option value="${s.id}">${esc(s.full_name)}</option>`).join('');
+
+render();
+if(isAdmin)renderAdmin();
+hide('status');
+}
+
+function render(){
+let q=$('search').value.trim().toLocaleLowerCase();
+let f=$('filter').value;
+
+let arr=teams.filter(t=>{
+let m=members(t.id);
+let hay=(t.topic_title+' '+m.map(x=>person(x.student_id)?.full_name||'').join(' ')).toLocaleLowerCase();
+return (!q||hay.includes(q))&&
+(f==='all'||(f==='available'?m.length<t.capacity:m.length>=t.capacity));
+});
+
+$('results').textContent=`${arr.length} من ${teams.length}`;
+
+if(!arr.length){
+$('teams').innerHTML='<div class="empty" style="grid-column:1/-1">مفيش نتائج مطابقة.</div>';
+return;
+}
+
+$('teams').innerHTML=arr.map(t=>{
+let m=members(t.id);
+let full=m.length>=t.capacity;
+let remaining=t.capacity-m.length;
+
+return `<article class="team">
+<div class="team-head">
+<div>
+<div class="muted">TEAM ${t.team_number} · ${t.capacity} أفراد</div>
+<h4>${esc(t.topic_title)}</h4>
+</div>
+<span class="tag ${full?'full':''}">${full?'مكتمل':`متاح ${remaining} مكان`}</span>
+</div>
+<div class="progress"><span style="width:${Math.min(100,m.length/t.capacity*100)}%"></span></div>
+<div class="muted">${m.length} / ${t.capacity} أعضاء</div>
+<div class="members">
+${Array.from({length:t.capacity},(_,i)=>{
+let x=m.find(z=>+z.slot_number===i+1);
+return `<div class="member"><span class="number">${i+1}</span><span>${x?esc(person(x.student_id)?.full_name||'طالب مسجل'):'مكان متاح'}</span></div>`;
+}).join('')}
+</div>
+<button class="btn ${full?'secondary':''}" data-join="${t.id}" ${full?'disabled':''}>${full?'التيم مكتمل':'انضم للتيم'}</button>
+</article>`;
+}).join('');
+
+$('teams').querySelectorAll('[data-join]').forEach(b=>{
+b.onclick=()=>openJoin(+b.dataset.join);
+});
+}
+
+function openJoin(id){
+chosen=teams.find(t=>+t.id===id);
+if(!chosen)return;
+
+$('selectedTeam').textContent=`Team ${chosen.team_number}: ${chosen.topic_title} — السعة ${chosen.capacity} أفراد`;
+$('student').value='';
+hide('joinMessage');
+$('joinConfirm').disabled=false;
+show('joinModal');
+}
+
+async function join(){
+let sid=+$('student').value;
+
+if(!sid){
+msg('joinMessage','اختار اسمك الأول.','error');
+return;
+}
+
+if(bookings.some(b=>+b.student_id===sid)){
+msg('joinMessage','الاسم ده مسجل بالفعل في تيم. كل طالب له تيم واحد فقط.','error');
+return;
+}
+
+let t=chosen;
+if(!t)return;
+
+let current=members(t.id);
+
+if(current.length>=t.capacity){
+msg('joinMessage','التيم اكتمل. اختار تيم تاني.','error');
+return;
+}
+
+let occupied=new Set(current.map(b=>+b.slot_number));
+let slot=Array.from({length:t.capacity},(_,i)=>i+1).find(i=>!occupied.has(i));
+
+$('joinConfirm').disabled=true;
+
+let {error}=await db.from('hydro_research_bookings').insert({
+team_id:t.id,
+student_id:sid,
+slot_number:slot
+});
+
+$('joinConfirm').disabled=false;
+
+if(error){
+msg('joinMessage',
+error.code==='23505'
+?'الاسم أو المكان اتسجل بالفعل. حدّث الصفحة واختار تيم متاح.'
+:'لم يتم التسجيل: '+error.message,
+'error');
+return;
+}
+
+msg('joinMessage','تم تسجيلك في التيم بنجاح!','success');
+await load();
+setTimeout(()=>hide('joinModal'),700);
+}
+
+async function checkAdmin(){
+let {data}=await db.auth.getSession();
+isAdmin=false;
+
+if(data.session){
+let {data:row}=await db.from('ptcu_admins')
+.select('user_id,email')
+.eq('user_id',data.session.user.id)
+.maybeSingle();
+
+if(row){
+isAdmin=true;
+$('adminEmail').textContent=row.email||data.session.user.email;
+show('adminPanel');
+renderAdmin();
+}
+}
+
+if(!isAdmin)hide('adminPanel');
+}
+
+function renderAdmin(){
+if(!isAdmin)return;
+
+if(!bookings.length){
+$('rows').innerHTML='<tr><td colspan="5">لا توجد تسجيلات حتى الآن.</td></tr>';
+return;
+}
+
+$('rows').innerHTML=[...bookings]
+.sort((a,b)=>a.team_id-b.team_id||a.slot_number-b.slot_number)
+.map(b=>{
+let t=teams.find(t=>+t.id===+b.team_id);
+let s=person(b.student_id);
+
+return `<tr>
+<td>${t?.team_number||'—'}</td>
+<td style="direction:ltr;text-align:left">${esc(t?.topic_title||'—')}</td>
+<td>${esc(s?.full_name||'—')}</td>
+<td>${esc(new Date(b.created_at).toLocaleString('ar-EG'))}</td>
+<td><button class="btn danger" data-remove="${b.id}">إزالة</button></td>
+</tr>`;
+}).join('');
+
+$('rows').querySelectorAll('[data-remove]').forEach(b=>{
+b.onclick=()=>removeBooking(+b.dataset.remove);
+});
+}
+
+async function removeBooking(id){
+if(!confirm('متأكد من إزالة الطالب من التيم؟'))return;
+
+let {error}=await db.from('hydro_research_bookings').delete().eq('id',id);
+
+if(error){
+msg('adminStatus','تعذر الحذف: '+error.message,'error');
+show('adminStatus');
+return;
+}
+
+msg('adminStatus','تمت إزالة التسجيل وإتاحة المكان.','success');
+show('adminStatus');
+await load();
+}
+
+async function login(){
+let email=$('email').value.trim();
+let password=$('password').value;
+
+if(!email||!password){
+msg('loginMessage','اكتب البريد وكلمة المرور.','error');
+return;
+}
+
+$('login').disabled=true;
+
+let {error}=await db.auth.signInWithPassword({email,password});
+
+$('login').disabled=false;
+
+if(error){
+msg('loginMessage','تعذر تسجيل الدخول. تأكد من البريد وكلمة المرور وتأكيد الحساب.','error');
+return;
+}
+
+await checkAdmin();
+
+if(!isAdmin){
+await db.auth.signOut();
+msg('loginMessage','الحساب لا يملك صلاحية Admin. تأكد أن الحساب مضاف في جدول ptcu_admins.','error');
+return;
+}
+
+hide('loginModal');
+await load();
+}
+
+$('refresh').onclick=load;
+$('search').oninput=render;
+$('filter').onchange=render;
+$('joinConfirm').onclick=join;
+$('joinClose').onclick=()=>hide('joinModal');
+
+$('adminOpen').onclick=async()=>{
+await checkAdmin();
+if(isAdmin){
+$('adminPanel').scrollIntoView({behavior:'smooth'});
+return;
+}
+hide('loginMessage');
+show('loginModal');
+};
+
+$('loginClose').onclick=()=>hide('loginModal');
+$('login').onclick=login;
+
+$('password').addEventListener('keydown',e=>{
+if(e.key==='Enter')login();
+});
+
+$('logout').onclick=async()=>{
+await db.auth.signOut();
+isAdmin=false;
+hide('adminPanel');
+msg('status','تم تسجيل الخروج من الإدارة.','success');
+show('status');
+};
+
+db.auth.onAuthStateChange(()=>setTimeout(checkAdmin,0));
+load();
+setInterval(load,30000);
+
 })();
-</script></body></html>
+</script>
+</body>
+</html>
+
